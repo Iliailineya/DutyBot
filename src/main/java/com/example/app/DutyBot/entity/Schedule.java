@@ -11,9 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User {
+public class Schedule {
     public long id;
-    public String name;
-    public String birthday;
-    public String duty;
+    //#TO DO Сделать нормальное название
+    public String dutyDate;
+
 }
