@@ -14,6 +14,7 @@ import lombok.Setter;
 public class User {
     public long id;
     public String name;
+    public String username;
     public String birthday;
     public String duty;
 }

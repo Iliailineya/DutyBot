@@ -59,6 +59,13 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>6.2.3.Final</version>
 		</dependency>
+
+		<!-- TelegramBots dependency -->
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots</artifactId>
+			<version>6.5.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

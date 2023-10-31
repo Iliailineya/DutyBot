@@ -37,7 +37,7 @@ public class MyBot extends TelegramLongPollingBot {
         KeyboardRow keyboardRow = new KeyboardRow();
         keyboardRows.add(keyboardRow);
         //Добавляем одну кнопку с текстом "Просвяти" наш ряд
-        keyboardRow.add(new KeyboardButton("Просвяти"));
+        keyboardRow.add(new KeyboardButton("Просвети"));
         //добавляем лист с одним рядом кнопок в главный объект
         replyKeyboardMarkup.setKeyboard(keyboardRows);
     }

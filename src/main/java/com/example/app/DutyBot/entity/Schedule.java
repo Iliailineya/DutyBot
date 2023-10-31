@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 public class Schedule {
     public long id;
-    //TODO Сделать нормальное название
+    //TODO Сделать нормальное название ниже
     public String dutyDate;
-
+    public String targetUser;
 }
