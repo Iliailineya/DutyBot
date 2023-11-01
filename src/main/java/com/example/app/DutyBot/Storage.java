@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Storage {
     private final ArrayList<String> quoteList;
-    Storage()
+    public Storage()
     {
         quoteList = new ArrayList<>();
         quoteList.add("Начинать всегда стоит с того, что сеет сомнения. \n\nБорис Стругацкий.");
@@ -12,7 +12,7 @@ public class Storage {
         quoteList.add("Мы должны признать очевидное: понимают лишь те,кто хочет понять.\n\nБернар Вербер");
     }
 
-    String getRandQuote()
+    public String getRandQuote()
     {
         //получаем случайное значение в интервале от 0 до самого большого индекса
         int randValue = (int)(Math.random() * quoteList.size());
