@@ -10,16 +10,16 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @SpringBootApplication
 public class DutyBotApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DutyBotApplication.class, args);
-		{
-			try {
-				TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-				telegramBotsApi.registerBot(new Controller());
-			} catch (TelegramApiException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DutyBotApplication.class, args);
+
+        try {
+            TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+            telegramBotsApi.registerBot(new Controller());
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

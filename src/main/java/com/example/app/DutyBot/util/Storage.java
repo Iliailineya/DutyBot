@@ -1,4 +1,4 @@
-package com.example.app.DutyBot;
+package com.example.app.DutyBot.util;
 
 import java.util.ArrayList;
 
