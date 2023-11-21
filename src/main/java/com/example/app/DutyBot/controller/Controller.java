@@ -14,20 +14,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 @org.springframework.stereotype.Controller
 public class Controller extends TelegramLongPollingBot {
     Storage storage;
     ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
 
-    public Controller()
-    {
+    private static final Logger LOGGER =
+            Logger.getLogger(Controller.class.getName());
+
+
+    public Controller() {
         storage = new Storage();
         initKeyboard();
     }
 
-    void initKeyboard()
-    {
+    void initKeyboard() {
         //Создаем объект будущей клавиатуры и выставляем нужные настройки
         replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setResizeKeyboard(true); //подгоняем размер
@@ -38,7 +41,7 @@ public class Controller extends TelegramLongPollingBot {
         //Создаем один ряд кнопок и добавляем его в список
         KeyboardRow keyboardRow = new KeyboardRow();
         keyboardRows.add(keyboardRow);
-        //Добавляем одну кнопку с текстом "Просвяти" наш ряд
+        //Добавляем одну кнопку с текстом "Просвети" наш ряд
         keyboardRow.add(new KeyboardButton("Просвети"));
         //добавляем лист с одним рядом кнопок в главный объект
         replyKeyboardMarkup.setKeyboard(keyboardRows);
@@ -46,9 +49,8 @@ public class Controller extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        try{
-            if(update.hasMessage() && update.getMessage().hasText())
-            {
+        try {
+            if (update.hasMessage() && update.getMessage().hasText()) {
                 //Извлекаем из объекта сообщение пользователя
                 Message inMess = update.getMessage();
                 //Достаем из inMess id чата пользователя
@@ -69,16 +71,20 @@ public class Controller extends TelegramLongPollingBot {
             e.printStackTrace();
         }
     }
+
     public String parseMessage(String textMsg) {
         String response;
 
         //Сравниваем текст пользователя с нашими командами, на основе этого формируем ответ
-        if(textMsg.equals("/start"))
+        if (textMsg.equals("/start")) {
             response = "Приветствую, бот знает много цитат. Жми /get, чтобы получить случайную из них";
-        else if(textMsg.equals("/get"))
+        } else if (textMsg.equals("/get")) {
             response = storage.getRandQuote();
-        else
+        } else {
             response = "Сообщение не распознано";
+            LOGGER.info("Сообщение не распознано: " + textMsg);
+        }
+
 
         return response;
     }
@@ -90,7 +96,7 @@ public class Controller extends TelegramLongPollingBot {
         try {
             fr = new FileReader("src/main/java/credential/BOT_NAME");
             Scanner scan = new Scanner(fr);
-            BOT_NAME= scan.nextLine();
+            BOT_NAME = scan.nextLine();
 
             fr.close();
         } catch (IOException e) {
@@ -107,7 +113,7 @@ public class Controller extends TelegramLongPollingBot {
         try {
             fr = new FileReader("src/main/java/credential/BOT_TOKEN");
             Scanner scan = new Scanner(fr);
-            BOT_TOKEN= scan.nextLine();
+            BOT_TOKEN = scan.nextLine();
 
             fr.close();
         } catch (IOException e) {
